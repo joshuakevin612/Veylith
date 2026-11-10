@@ -1,0 +1,4 @@
+# Same line endings on every machine, so diffs stay small between two devices.
+* text=auto eol=lf
+*.png binary
+*.ico binary

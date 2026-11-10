@@ -1,0 +1,20 @@
+# Local development database only. Credentials here are for localhost, not production.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: veylith
+      POSTGRES_PASSWORD: veylith
+      POSTGRES_DB: veylith
+    ports:
+      - "5432:5432"
+    volumes:
+      - veylith_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U veylith"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  veylith_pg:
